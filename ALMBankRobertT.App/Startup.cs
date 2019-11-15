@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using ALMBankRobertT.App.Models;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
@@ -59,6 +60,46 @@ namespace ALMBankRobertT.App
                     name: "default",
                     template: "{controller=Home}/{action=Index}/{id?}");
             });
+
+            var customers = CreateCustomers();
+            BankRepository.AddCustomers(customers);
+        }
+        public List<Customer> CreateCustomers()
+        {
+            var customers = new List<Customer>() {
+                CreateCustomer(1, "Robert"),
+                CreateCustomer(2, "Samie"),
+                CreateCustomer(3, "Tom"),
+                CreateCustomer(4, "Michael"),
+                CreateCustomer(5, "Fredrik")
+            };
+
+            return customers;
+        }
+
+        private Customer CreateCustomer(int id, string name)
+        {
+            var customer = new Customer()
+            {
+                CustomerId = id,
+                Name = name,
+                Accounts = new List<Account>()
+                {
+                    new Account()
+                    {
+                        AccountId = id,
+                        Balance = 9500.00M
+                    }
+                }
+            };
+
+            return customer;
         }
     }
 }
+
+
+
+
+
+    

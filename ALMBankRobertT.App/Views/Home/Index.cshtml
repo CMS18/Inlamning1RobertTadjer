@@ -1,9 +1,29 @@
 ﻿@{
-    ViewData["Title"] = "Home Page";
+    ViewData["Title"] = "Customer accounts";
 }
 
 <div class="text-center">
-    <h1 class="display-4">ALM course project</h1>
-    <p>Simple bank application in ASP.NET Core 2.2 to demonstrate Application Lifecycle Management course.</p>
-    <p>Tests included later.</p>
+    <h1 class="display-4">Robert's bank</h1>
+
+    @foreach (var customer in Model)
+    {
+        <ul>
+            <li>
+                <p>Kundnummer: @customer.CustomerId</p>
+                <p>Kund: @customer.Name</p>
+            </li>
+
+            @foreach (var account in customer.Accounts)
+            {
+
+                <li>
+                    <p>Kontonummer: @account.AccountId</p>
+                    <p>Saldo: @account.Balance</p>
+                </li>
+            }
+
+
+        </ul>
+    }
+
 </div>

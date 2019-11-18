@@ -27,7 +27,7 @@ namespace ALMBankRobertT.App.Models
         {
             List<Account> accounts = new List<Account>();
             for (int i = 0; i < Customers.Count; i++)
-            {              
+            {
                 accounts.AddRange(Customers[i].Accounts);
             }
             return accounts;

@@ -9,6 +9,7 @@ namespace ALMBankRobertT.App.Models
     {
         public int CustomerId { get; set; }
         public string Name { get; set; }
+
         public List<Account> Accounts { get; set; }
     }
 }
